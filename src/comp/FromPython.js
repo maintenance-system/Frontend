@@ -1,11 +1,25 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 export default function FromPython() {
   const [text, setText] = useState('');
   const [date, setDate] = useState("a");
-  // const [text, setText] = useState('');
-  // const [text, setText] = useState('');
+  const [number, setNumber] = useState('0');
+  const [info, setInfo] = useState('no infomation');
 
+  useEffect(() => {
+    const fetchDate = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/date');
+        const data = await response.text();
+        setDate(data);
+      } catch (error) {
+        console.error('An error occurred:', error);
+      }
+    };
+
+    fetchDate();
+  }, []);
 
   const fetchText = async () => {
     try {
@@ -20,7 +34,7 @@ export default function FromPython() {
     try {
       const response = await fetch('http://localhost:8000/get-text');
       const data = await response.text();
-      setText(data);
+      setNumber(data);
     } catch (error) {
       console.error('An error occurred:', error);
     }
@@ -30,19 +44,20 @@ export default function FromPython() {
     try {
       const response = await fetch('http://localhost:8000/get-text');
       const data = await response.text();
-      setText(data);
+      setInfo(data);
     } catch (error) {
       console.error('An error occurred:', error);
     }
   };
   const fetchDate = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/date');
-      const data = await response.text();
       debugger
-      setDate(data);
+      const response = await axios.get('http://127.0.0.1:5000/date');
+      setDate(response.data);
+      console.log(response.data);
     } catch (error) {
-      console.error('An error occurred:', error);
+      console.error(error);
+      alert('Error occurred while fetching data.');
     }
   };
   const fetchFile = async () => {
@@ -50,6 +65,7 @@ export default function FromPython() {
       const response = await fetch('http://127.0.0.1:5000/api/FileUrls');
       const data = await response.text();
       setText(data);
+
     } catch (error) {
       console.error('An error occurred:', error);
     }
@@ -64,6 +80,9 @@ export default function FromPython() {
       <button onClick={fetchDate}>Date</button>
       <button onClick={fetchFile}>File</button>
       <p>{date}</p>
+      <p>{text}</p>
+      <p>{number}</p>
+      <p>{info}</p>
     </div>
   );
 }
