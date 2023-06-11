@@ -9,8 +9,7 @@ export default function FileUpload() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
   };
-///55
-//5
+
   const handleUpload = async () => {
     try {
       const formData = new FormData();
