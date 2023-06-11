@@ -4,6 +4,7 @@ import Post from './comp/Post';
 import Delete from './comp/Delete';
 import FileUpload from './comp/FileUpload';
 import FileUrls from './comp/FileUrls';
+import FromPython from './comp/FromPython';
 import './App.css';
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
       <FileUpload/>
       <h1>FileUrls</h1>
       <FileUrls/>
+      <h1>FromPython</h1>
+      <FromPython/>
       </center>
 
     </div>
