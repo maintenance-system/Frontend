@@ -20,9 +20,7 @@ export default function FileUrls() {
     setStatus(event.target.value);
   };
 
-  // const handleGetUrls = () => {
-  //   fetchUrlsByStatus(status);
-  // };
+
 
   useEffect(() => {
     fetchUrlsByStatus(status);
@@ -38,7 +36,6 @@ export default function FileUrls() {
           value={status}
           onChange={handleStatusChange}
         />
-        {/* <button onClick={handleStatusChange}>GetUrls</button> */}
       </div>
       <ul>
         {fileUrls.map((url, index) => (
