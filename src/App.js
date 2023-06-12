@@ -6,6 +6,8 @@ import FileUpload from './comp/FileUpload';
 import FileUrls from './comp/FileUrls';
 import FromPython from './comp/FromPython';
 import './App.css';
+import Login from './comp/Login';
+import Signup from './comp/Signup';
 
 function App() {
   return (
@@ -47,6 +49,10 @@ function App() {
       <FileUrls/>
       <h1>FromPython</h1>
       <FromPython/>
+      <h1>Login</h1>
+      <Login/>
+      <h1>Signup</h1>
+      <Signup/>
       </center>
 
     </div>
