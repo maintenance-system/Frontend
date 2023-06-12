@@ -15,17 +15,18 @@ export default function Login() {
             Authorization: password
           }
         });
-      console.log(response.data)
-    //   if(response.data.name==userName && 
-    //     response.data.password==password){
-    //         workerRole()
-    //     }
+         console.log(response.data)
+        // if(response.data[0].name==userName 
+        // &&  response.data.password==password )
+        // {
+        //     workerRole()
+        // }
         if(response.data==true){
                 workerRole()
-        }else{
+        }
+        else{
             setMessage("Username or password incorrect")
         }
-     
     } catch (error) {
       console.error('An error occurred:', error);
       
