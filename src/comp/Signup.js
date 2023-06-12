@@ -10,7 +10,11 @@ export default function Signup() {
   
   const newWorker = async () => {
     try {
-      const response = await axios.post(`http://localhost:5029/api/user/${userName}${password}${role}`);
+      const response = await axios.post(`http://localhost:5029/api/user/${userName}${role}`,{
+        headers: {
+            Authorization: password
+          }
+        });
       console.log(response.data);
       
      

@@ -35,7 +35,11 @@ export default function Login() {
 
   const workerRole = async () => {
     try {
-      const response = await axios.get(`http://localhost:5029/api/userRoles/${userName}`);
+      const response = await axios.get(`http://localhost:5029/api/userRoles/${userName}`,{
+        headers: {
+            Authorization: password
+          }
+        });
       console.log(response.data)
       const userRole=response.data.role
 
