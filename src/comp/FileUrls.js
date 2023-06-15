@@ -39,7 +39,11 @@ export default function FileUrls() {
       </div>
       <ul>
         {fileUrls.map((url, index) => (
-          <li key={index}>{url}</li>
+          <>
+          
+          <lu key={index}><a href={url}><i class="fas fa-file-pdf"> </i></a>גן</lu>
+          <br></br>
+          </>
         ))}
       </ul>
     </div>

@@ -12,13 +12,17 @@ import {
 }
   from 'mdb-react-ui-kit';
 import "./Login.css"
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [userRole, setUserRole] = useState('');
- 
+
+  const navigate = useNavigate()
+
+
 
   const workerID = async () => {
     try {
@@ -49,10 +53,26 @@ export default function Login() {
         }
       });
       console.log(response.data)
-      setUserRole(response.data.role1) 
-      
+      setUserRole(response.data.role1)
+      switch (userRole) {
+        case "מנהל":
+          navigate('/manager')
+          break;
+        case "ראש צוות":
+          navigate('/teamleader')
+          break;
+        case "עובד תחזוקה":
+          navigate('/teamleader')
+          break;
+        case "מזכיר":
+          navigate('/teamleader')
+          break;
+        case "גננת":
+          navigate('/teamleader')
+          break;
+      }
       console.log(userRole);
-      nextPage()
+      //nextPage()
 
 
 
@@ -61,16 +81,27 @@ export default function Login() {
 
     }
   };
-  const nextPage = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5029/api/RoleActions/${userRole}`)
-      console.log(response.data)
-      
-    } catch (error) {
-      console.error('An error occurred:', error);
-
+  const nextPage = () => {
+    switch (userRole) {
+      case "מנהל":
+        navigate('/manager')
+        break;
+      case "מזכיר":
+        navigate('/teamleader')
+        break;
     }
-  };
+
+  }
+  // const nextPage = async () => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:5029/api/RoleActions/${userRole}`)
+  //     console.log(response.data)
+
+  //   } catch (error) {
+  //     console.error('An error occurred:', error);
+
+  //   }
+  // };
 
   return (
     <MDBContainer fluid className='p-4' >

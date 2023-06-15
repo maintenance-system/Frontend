@@ -11,6 +11,11 @@ import Signup from './comp/Signup';
 import Log from './comp/Log';
 import Footer from './comp/API/layout/Footer';
 import HomePageTeamLeader from './comp/HomePages/HomePageTeamLeader';
+import { Route } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes } from 'react-router';
+import HomePageManager from './comp/HomePages/HomePageManager';
+import HomePageWorker from './comp/HomePages/HomePageWorker';
 
 function App() {
   return (
@@ -56,24 +61,31 @@ function App() {
       <Login/>
       <h1>Signup</h1>
       <Signup/> */}
-      <Login></Login>
+      {/* <Login></Login>
       <Signup></Signup>
       <Footer></Footer>
-      <HomePageTeamLeader></HomePageTeamLeader>
+      <HomePageTeamLeader></HomePageTeamLeader> */}
       <BrowserRouter>
-          <Navbar></Navbar>
           <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/about' element={<About />} />
-            <Route exact path='/electronic' element={<Electronic />} />
-            <Route exact path='/paper' element={<Paper />} />
-            <Route exact path='/filing' element={<Filing />} />
-            <Route exact path='/stationery' element={<Stationery />} />
-            <Route exact path='/cart' element={<CartDetails />} />
-            <Route exact path='/branches' element={<Branches />} />
-            {/* <Route exact path='/noProducts' element={<NoProducts/>} /> */}
+            <Route exact path='/' element={<Login />} />
+            <Route exact path='/signup' element={<Signup />} />
+            <Route exact path='/fileUpload' element={<FileUpload />} />
+            <Route exact path='/fileUrl' element={<FileUrls />} />
+            <Route exact path='/info' element={<Get2 />} />
+            <Route exact path='/fromPython' element={<FromPython />} />
+            <Route exact path='/worker' element={<HomePageWorker />} />
+            {/* <Route exact path='/worker' element={<HomePageWorker />} /> */}
+            {/* <Route exact path='/secretary' element={<HomePageWorker />} /> */}
+            
+
+            <Route exact path='/manager' element={<HomePageManager />} />
+            <Route exact path='/teamleader' element={<HomePageTeamLeader />} />
+
           </Routes>
+
         </BrowserRouter>
+        <Footer></Footer>
+
       </center>
 
     </div>
