@@ -1,7 +1,7 @@
 import logo from './logo.svg';
-import Get2 from './comp/Get2'
-import Post from './comp/Post';
-import Delete from './comp/Delete';
+import Get2 from './comp/API/Get2'
+import Post from './comp/API/Post';
+import Delete from './comp/API/Delete';
 import FileUpload from './comp/FileUpload';
 import FileUrls from './comp/FileUrls';
 import FromPython from './comp/FromPython';
@@ -9,6 +9,8 @@ import './App.css';
 import Login from './comp/Login';
 import Signup from './comp/Signup';
 import Log from './comp/Log';
+import Footer from './comp/API/layout/Footer';
+import HomePageTeamLeader from './comp/HomePages/HomePageTeamLeader';
 
 function App() {
   return (
@@ -55,6 +57,23 @@ function App() {
       <h1>Signup</h1>
       <Signup/> */}
       <Login></Login>
+      <Signup></Signup>
+      <Footer></Footer>
+      <HomePageTeamLeader></HomePageTeamLeader>
+      <BrowserRouter>
+          <Navbar></Navbar>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/about' element={<About />} />
+            <Route exact path='/electronic' element={<Electronic />} />
+            <Route exact path='/paper' element={<Paper />} />
+            <Route exact path='/filing' element={<Filing />} />
+            <Route exact path='/stationery' element={<Stationery />} />
+            <Route exact path='/cart' element={<CartDetails />} />
+            <Route exact path='/branches' element={<Branches />} />
+            {/* <Route exact path='/noProducts' element={<NoProducts/>} /> */}
+          </Routes>
+        </BrowserRouter>
       </center>
 
     </div>
