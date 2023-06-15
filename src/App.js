@@ -8,6 +8,7 @@ import FromPython from './comp/FromPython';
 import './App.css';
 import Login from './comp/Login';
 import Signup from './comp/Signup';
+import Log from './comp/Log';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
     <div>
       <center>
 
-      <h1>Get</h1>
+      {/* <h1>Get</h1>
       <Get2/>
       <h1>Post</h1>
       <Post/>
@@ -52,7 +53,8 @@ function App() {
       <h1>Login</h1>
       <Login/>
       <h1>Signup</h1>
-      <Signup/>
+      <Signup/> */}
+      <Login></Login>
       </center>
 
     </div>
