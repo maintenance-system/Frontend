@@ -8,7 +8,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBInput,
-  MDBCheckbox,
   MDBIcon
 }
   from 'mdb-react-ui-kit';
@@ -19,9 +18,7 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [userRole, setUserRole] = useState('');
-  const [userRole2, setUserRole2] = useState('');
-
-
+ 
 
   const workerID = async () => {
     try {
@@ -52,7 +49,7 @@ export default function Login() {
         }
       });
       console.log(response.data)
-      setUserRole(response.data[0].role1) 
+      setUserRole(response.data.role1) 
       
       console.log(userRole);
       nextPage()
@@ -66,7 +63,7 @@ export default function Login() {
   };
   const nextPage = async () => {
     try {
-      const response = await axios.get(`http://localhost:5029/api/Actions/${userRole}`)
+      const response = await axios.get(`http://localhost:5029/api/RoleActions/${userRole}`)
       console.log(response.data)
       
     } catch (error) {
@@ -150,27 +147,5 @@ export default function Login() {
       </MDBRow>
 
     </MDBContainer>
-    //     <div>
-    //       <label htmlFor="text">שם משתמש:</label>
-    //       <input
-    //         type="text"
-    //         value={userName}
-    //         onChange={(e) => setUserName(e.target.value)}
-    //         placeholder="Enter Name"
-    //       />
-    //       <br></br>
-    //       <label htmlFor="password">סיסמה:</label>
-    //       <input
-    //         type="password"
-    //         id="password"
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         placeholder="Enter ID"
-    //       />
-
-    // <br></br>
-    //       <button onClick={workerID}>Login</button>
-    //       <p>{message}</p>
-    //     </div>
   );
 }
