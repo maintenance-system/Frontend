@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+
+
 import axios from 'axios';
 import {
   MDBBtn,
@@ -20,9 +23,15 @@ export default function Login() {
   const [message, setMessage] = useState('');
   const [userRole, setUserRole] = useState('');
 
+  localStorage.setItem('lastSignInTime', Date);
+
+
   const navigate = useNavigate()
 
 
+  useEffect(() => {
+    checkSignInStatus();
+  }, []);
 
   const workerID = async () => {
     try {
@@ -34,7 +43,11 @@ export default function Login() {
       console.log(response.data)
       if (response.data == true) {
         setMessage(" בהצלחה זוהיתם")
+        localStorage.setItem('lastLoginTime', Date.now());
+
         workerRole()
+       
+        
       }
       else {
         setMessage("השם או הסיסמא אינם נכונים")
@@ -72,26 +85,36 @@ export default function Login() {
           break;
       }
       console.log(userRole);
-      //nextPage()
-
-
 
     } catch (error) {
       console.error('An error occurred:', error);
 
     }
   };
-  const nextPage = () => {
-    switch (userRole) {
-      case "מנהל":
-        navigate('/manager')
-        break;
-      case "מזכיר":
-        navigate('/teamleader')
-        break;
-    }
 
+  function checkSignInStatus() { 
+     const lastSignInTime = localStorage.getItem('lastSignInTime');
+    if (lastSignInTime) {
+      const signInDate = new Date(parseInt(lastSignInTime, 10));
+      const currentDate = new Date();
+  
+      if (currentDate.getDate() === signInDate.getDate()) {
+        nextPage()
+      }
+    
   }
+  
+  const nextPage = () => {
+    // switch (userRole) {
+    //   case "מנהל":
+    //     navigate('/manager')
+    //     break;
+    //   case "מזכיר":
+    //     navigate('/teamleader')
+    //     break;
+    // }
+    navigate('/manager')
+  };
   // const nextPage = async () => {
   //   try {
   //     const response = await axios.get(`http://localhost:5029/api/RoleActions/${userRole}`)
@@ -179,4 +202,5 @@ export default function Login() {
 
     </MDBContainer>
   );
+}
 }

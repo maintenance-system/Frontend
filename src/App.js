@@ -16,6 +16,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router';
 import HomePageManager from './comp/HomePages/HomePageManager';
 import HomePageWorker from './comp/HomePages/HomePageWorker';
+import HomePageSecretary from './comp/HomePages/HomePageSecretary';
+import HomePagekindergartenTeacher from './comp/HomePages/HomePagekindergartenTeacher';
 
 function App() {
   return (
@@ -74,8 +76,8 @@ function App() {
             <Route exact path='/info' element={<Get2 />} />
             <Route exact path='/fromPython' element={<FromPython />} />
             <Route exact path='/worker' element={<HomePageWorker />} />
-            {/* <Route exact path='/worker' element={<HomePageWorker />} /> */}
-            {/* <Route exact path='/secretary' element={<HomePageWorker />} /> */}
+            <Route exact path='/kindergartenTeacher' element={<HomePagekindergartenTeacher />} />
+            <Route exact path='/secretary' element={<HomePageSecretary />} />
             
 
             <Route exact path='/manager' element={<HomePageManager />} />
