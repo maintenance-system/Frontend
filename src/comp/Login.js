@@ -41,7 +41,7 @@ export default function Login() {
         }
       });
       console.log(response.data)
-      if (response.data == true) {
+      if (response.data === true) {
         setMessage(" בהצלחה זוהיתם")
         localStorage.setItem('lastLoginTime', Date.now());
 

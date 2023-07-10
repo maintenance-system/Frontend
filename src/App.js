@@ -1,7 +1,7 @@
 import logo from './logo.svg';
-import Get2 from './comp/API/Get2'
-import Post from './comp/API/Post';
-import Delete from './comp/API/Delete';
+import Get2 from './API/Get2'
+import Post from './API/Post';
+import Delete from './API/Delete';
 import FileUpload from './comp/FileUpload';
 import FileUrls from './comp/FileUrls';
 import FromPython from './comp/FromPython';
@@ -9,7 +9,7 @@ import './App.css';
 import Login from './comp/Login';
 import Signup from './comp/Signup';
 import Log from './comp/Log';
-import Footer from './comp/API/layout/Footer';
+import Footer from './layout/Footer';
 import HomePageTeamLeader from './comp/HomePages/HomePageTeamLeader';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
