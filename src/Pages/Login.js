@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
-
-
 import axios from 'axios';
 import {
   MDBBtn,
@@ -14,7 +11,7 @@ import {
   MDBIcon
 }
   from 'mdb-react-ui-kit';
-import "./Login.css"
+import "../comp/Login.css"
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
@@ -23,15 +20,8 @@ export default function Login() {
   const [message, setMessage] = useState('');
   const [userRole, setUserRole] = useState('');
 
-  localStorage.setItem('lastSignInTime', Date);
-
-
   const navigate = useNavigate()
 
-
-  useEffect(() => {
-    checkSignInStatus();
-  }, []);
 
   const workerID = async () => {
     try {
@@ -43,11 +33,7 @@ export default function Login() {
       console.log(response.data)
       if (response.data === true) {
         setMessage(" בהצלחה זוהיתם")
-        localStorage.setItem('lastLoginTime', Date.now());
-
         workerRole()
-       
-        
       }
       else {
         setMessage("השם או הסיסמא אינם נכונים")
@@ -58,6 +44,7 @@ export default function Login() {
     }
   };
 
+
   const workerRole = async () => {
     try {
       const response = await axios.get(`http://localhost:5029/api/UaerRoles/${userName}`, {
@@ -65,66 +52,34 @@ export default function Login() {
           Authorization: password
         }
       });
-      console.log(response.data)
-      setUserRole(response.data.role1)
+      console.log(response.data[0].role1)
+      setUserRole(response.data[0].role1)
       switch (userRole) {
         case "מנהל":
-          navigate('/manager')
+          navigate('/manager');
           break;
         case "ראש צוות":
-          navigate('/teamleader')
+          navigate('/teamleader');
           break;
         case "עובד תחזוקה":
-          navigate('/teamleader')
+          navigate('/teamleader');
           break;
         case "מזכיר":
-          navigate('/teamleader')
+          navigate('/teamleader');
           break;
         case "גננת":
-          navigate('/teamleader')
+          navigate('/teamleader');
+          break;
+        default:
+          navigate('/signup');
           break;
       }
-      console.log(userRole);
-
     } catch (error) {
       console.error('An error occurred:', error);
-
     }
   };
 
-  function checkSignInStatus() { 
-     const lastSignInTime = localStorage.getItem('lastSignInTime');
-    if (lastSignInTime) {
-      const signInDate = new Date(parseInt(lastSignInTime, 10));
-      const currentDate = new Date();
-  
-      if (currentDate.getDate() === signInDate.getDate()) {
-        nextPage()
-      }
-    
-  }
-  
-  const nextPage = () => {
-    // switch (userRole) {
-    //   case "מנהל":
-    //     navigate('/manager')
-    //     break;
-    //   case "מזכיר":
-    //     navigate('/teamleader')
-    //     break;
-    // }
-    navigate('/manager')
-  };
-  // const nextPage = async () => {
-  //   try {
-  //     const response = await axios.get(`http://localhost:5029/api/RoleActions/${userRole}`)
-  //     console.log(response.data)
 
-  //   } catch (error) {
-  //     console.error('An error occurred:', error);
-
-  //   }
-  // };
 
   return (
     <MDBContainer fluid className='p-4' >
@@ -148,16 +103,6 @@ export default function Login() {
 
           <MDBCard className='my-5'>
             <MDBCardBody className='p-5'>
-
-              {/* <MDBRow>
-                <MDBCol col='6'>
-                  <MDBInput wrapperClass='mb-4' label='First name' id='form1' type='text' />
-                </MDBCol>
-
-                <MDBCol col='6'>
-                  <MDBInput wrapperClass='mb-4' label='Last name' id='form1' type='text' />
-                </MDBCol>
-              </MDBRow> */}
 
               <MDBInput wrapperClass='mb-4' label='שם משתמש' id='form1' type='text' value={userName}
                 onChange={(e) => setUserName(e.target.value)} />
@@ -187,9 +132,7 @@ export default function Login() {
                   <MDBIcon fab icon='google' size="sm" />
                 </MDBBtn>
 
-                {/* <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                  <MDBIcon fab icon='github' size="sm" />
-                </MDBBtn> */}
+
 
               </div>
 
@@ -203,4 +146,4 @@ export default function Login() {
     </MDBContainer>
   );
 }
-}
+
