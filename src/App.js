@@ -6,14 +6,14 @@ import './App.css';
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Footer from './layout/Footer';
-import HomePageTeamLeader from './Pages/HomePages/HomePageTeamLeader';
+import HomePageTeamLeader from './Pages/HomePages/TeamLeader';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router';
-import HomePageManager from './Pages/HomePages/HomePageManager';
-import HomePageWorker from './Pages/HomePages/HomePageWorker';
-import HomePageSecretary from './Pages/HomePages/HomePageSecretary';
-import HomePagekindergartenTeacher from './Pages/HomePages/HomePagekindergartenTeacher';
+import HomePageManager from './Pages/HomePages/Manager';
+import HomePageWorker from './Pages/Worker';
+import HomePageSecretary from './Pages/HomePages/Secretary';
+import HomePagekindergartenTeacher from './Pages/HomePages/kindergartenTeacher';
 
 function App() {
   return (
@@ -33,7 +33,6 @@ function App() {
             <Route exact path='/secretary' element={<HomePageSecretary />} />
             <Route exact path='/manager' element={<HomePageManager />} />
             <Route exact path='/teamleader' element={<HomePageTeamLeader />} />
-
           </Routes>
         </BrowserRouter>
         <Footer></Footer>

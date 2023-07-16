@@ -13,7 +13,6 @@ import {
   MDBIcon
 }
 from 'mdb-react-ui-kit';
-import "./Login.css"
 
 export default function Signup() {
   const [userName, setUserName] = useState('');

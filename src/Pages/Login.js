@@ -10,8 +10,7 @@ import {
   MDBInput,
   MDBIcon
 }
-  from 'mdb-react-ui-kit';
-import "../comp/Login.css"
+from 'mdb-react-ui-kit';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
